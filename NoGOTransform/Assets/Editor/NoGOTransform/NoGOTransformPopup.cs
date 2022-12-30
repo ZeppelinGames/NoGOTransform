@@ -2,8 +2,6 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEditor.Events;
-//using UnityEngine.EventSystems;
-
 using Events = UnityEditor.Events;
 
 public class NoGOTransformPopup : EditorWindow
@@ -33,7 +31,6 @@ public class NoGOTransformPopup : EditorWindow
             sceneViewRect = sceneView.position;
         }
 
-        // UnityEventTools.RegisterFloatPersistentListener(null, 0, (float f) => { Debug.Log("hiehgt update?"); }, sceneView.position.height);
         Reposition();
         window.ShowPopup();
     }
@@ -66,17 +63,21 @@ public class NoGOTransformPopup : EditorWindow
         }
     }
 
-    private void Update()
+    public static void Update()
     {
         // the != 1 is a weird thing that it defaults to when you scale the scene view too fast?
-        // plz dont move your scene view 1 pixel in :)
+        // plz dont move your scene view 1 pixel in :) (someone if you know a fix / better way to do this plz fix)
+        if(sceneView == null || window == null)
+        {
+            return;
+        }
         if (sceneView.position != sceneViewRect && sceneView.position.x != 1)
         {
             sceneViewRect = sceneView.position;
             Debug.Log(sceneView.position);
             Reposition();
         }
-        this.Repaint();
+        window.Repaint();
     }
 
     private static void Reposition()
