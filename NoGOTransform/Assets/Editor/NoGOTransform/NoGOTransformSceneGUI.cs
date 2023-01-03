@@ -5,7 +5,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(GameObject))]
+[CustomEditor(typeof(Transform))]
 public class NoGOTransformSceneGUI : Editor
 {
     private static NoGOTransform selected = null;
@@ -72,7 +72,7 @@ public class NoGOTransformSceneGUI : Editor
     {
         //Handles.BeginGUI();
 
-        GameObject go = (GameObject)target;
+        GameObject go = ((Transform)target).gameObject;
 
         MonoBehaviour[] comps = go.GetComponents<MonoBehaviour>();
 
