@@ -5,7 +5,7 @@ using UnityEngine;
 public class NoGOTransform
 {
     public Vector3 position = Vector3.zero;
-    public Quaternion rotation = Quaternion.Euler(0,0,0);
+    public Quaternion rotation = new Quaternion(1, 1, 1, 1);
     public Vector3 scale = Vector3.one;
 
     public Vector3 eulerAngles

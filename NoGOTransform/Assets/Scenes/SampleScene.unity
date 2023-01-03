@@ -326,11 +326,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   t:
-    position: {x: -0.13365039, y: 1.8140706, z: 0.15514626}
-    rotation: {x: -0.6319244, y: 0.2750215, z: 0.4260767, w: 0.58608305}
+    position: {x: -0.1777709, y: 1.7158922, z: 0.2602696}
+    rotation: {x: -0.8637575, y: -0.4812684, z: -0.1362896, w: -0.061063766}
     scale: {x: 1, y: 1, z: 1}
+  arrT:
+  - position: {x: 0, y: 0.8725539, z: -0.62741494}
+    rotation: {x: 0.47866935, y: -0.019929275, z: -0.37097648, w: 0.7955218}
+    scale: {x: 0, y: 0, z: 0}
+  - position: {x: 0, y: 0.74601007, z: 1.6304431}
+    rotation: {x: 0.26516527, y: -0.012617156, z: 0.55444545, w: 0.7887448}
+    scale: {x: 0, y: 0, z: 0}
   transforms:
-  - position: {x: 0, y: 0.88, z: 0}
+  - position: {x: 0, y: 0.51, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 0, y: 0, z: 0}
   - position: {x: 0, y: 1.68, z: 0}
@@ -353,7 +360,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1945036978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.382, y: 0.657, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -20,24 +20,38 @@ public class NoGOTransformSceneGUI : Editor
 
         foreach (FieldInfo t in fields)
         {
-            //Debug.Log(t.Name + " " + t.FieldType.Name);
-            if (t.FieldType.IsPrimitive)
-            {
-                continue;
-            }
-
             if (t.FieldType.Equals(searchFor))
             {
                 NoGOTransform newT = (NoGOTransform)t.GetValue(c);
                 found.Add(newT);
-                return found;
             }
             else
             {
-                if (!t.FieldType.IsPrimitive && t.FieldType.IsClass)
+                //Debug.Log(t.FieldType.Name);
+                if (t.FieldType.IsArray /*&& t.FieldType.GetElementType().Equals(searchFor)*/)
                 {
+                    Array arr = (Array)t.GetValue(c);
+                    // Debug.Log("ARRAY " + arr.Length);
+                    if (arr != null)
+                    {
+                        for (int i = 0; i < arr.Length; i++)
+                        {
+                            NoGOTransform nogo = (NoGOTransform)arr.GetValue(i);
+                            found.Add(nogo);
+                        }
+                    }
+                    else
+                    {
+                        //Debug.Log("Null array");
+                    }
+                    return found;
+                }
+
+
+                if (t.FieldType.IsClass)
+                {
+                    //Debug.Log("IS CLASS");
                     object val = t.GetValue(c);
-                    Debug.Log(val);
                     if (val != null)
                     {
                         return RecurseFieldSearch(val, t.FieldType, searchFor, found);
@@ -70,7 +84,7 @@ public class NoGOTransformSceneGUI : Editor
             Handles.color = Color.yellow;
             foreach (NoGOTransform t in transforms)
             {
-                bool clicked = Handles.Button(t.position, t.rotation, 0.1f, 0.1f, Handles.SphereHandleCap);
+                bool clicked = Handles.Button(t.position, Quaternion.identity, 0.1f, 0.1f, Handles.SphereHandleCap);
                 if (clicked)
                 {
                     // selected node
