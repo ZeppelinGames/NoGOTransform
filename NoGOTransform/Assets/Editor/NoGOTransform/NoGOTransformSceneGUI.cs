@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(Transform))]
+[CanEditMultipleObjects]
 public class NoGOTransformSceneGUI : Editor
 {
     private static NoGOTransform selected = null;
@@ -99,5 +100,15 @@ public class NoGOTransformSceneGUI : Editor
             Handles.TransformHandle(ref selected.position, ref selected.rotation, ref selected.scale);
             NoGOTransformPopup.Update();
         }
+    }
+
+    public override void OnInspectorGUI()
+    {
+        //base.OnInspectorGUI(); Unity doin waacky shit. Dont ask
+
+        Transform t = (Transform)target;
+        t.localPosition = EditorGUILayout.Vector3Field("Position", t.localPosition);
+        t.eulerAngles = EditorGUILayout.Vector3Field("Rotation", t.eulerAngles);
+        t.localScale = EditorGUILayout.Vector3Field("Scale", t.localScale);
     }
 }
